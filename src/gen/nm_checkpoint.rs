@@ -8,8 +8,8 @@ pub trait OrgFreedesktopNetworkManagerCheckpoint {
     fn rollback_timeout(&self) -> Result<u32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerCheckpoint
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerCheckpoint for blocking::Proxy<'a, C>
 {
     fn devices(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(

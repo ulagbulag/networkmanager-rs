@@ -8,7 +8,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceBridge {
     fn slaves(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerDeviceBridge for blocking::Proxy<'a, C>
 {
     fn hw_address(&self) -> Result<String, dbus::Error> {

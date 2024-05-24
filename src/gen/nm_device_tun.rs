@@ -12,8 +12,8 @@ pub trait OrgFreedesktopNetworkManagerDeviceTun {
     fn hw_address(&self) -> Result<String, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerDeviceTun
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerDeviceTun for blocking::Proxy<'a, C>
 {
     fn owner(&self) -> Result<i64, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(

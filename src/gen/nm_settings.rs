@@ -42,13 +42,13 @@ pub trait OrgFreedesktopNetworkManagerSettings {
     fn can_modify(&self) -> Result<bool, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerSettings
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerSettings for blocking::Proxy<'a, C>
 {
     fn list_connections(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "ListConnections",
+            "ListSyncConnections",
             (),
         )
         .and_then(|r: (Vec<dbus::Path<'static>>,)| Ok(r.0))
@@ -57,7 +57,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     fn get_connection_by_uuid(&self, uuid: &str) -> Result<dbus::Path<'static>, dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "GetConnectionByUuid",
+            "GetSyncConnectionByUuid",
             (uuid,),
         )
         .and_then(|r: (dbus::Path<'static>,)| Ok(r.0))
@@ -72,7 +72,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     ) -> Result<dbus::Path<'static>, dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "AddConnection",
+            "AddSyncConnection",
             (connection,),
         )
         .and_then(|r: (dbus::Path<'static>,)| Ok(r.0))
@@ -87,7 +87,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     ) -> Result<dbus::Path<'static>, dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "AddConnectionUnsaved",
+            "AddSyncConnectionUnsaved",
             (connection,),
         )
         .and_then(|r: (dbus::Path<'static>,)| Ok(r.0))
@@ -110,7 +110,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     > {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "AddConnection2",
+            "AddSyncConnection2",
             (settings, flags, args),
         )
     }
@@ -118,7 +118,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     fn load_connections(&self, filenames: Vec<&str>) -> Result<(bool, Vec<String>), dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "LoadConnections",
+            "LoadSyncConnections",
             (filenames,),
         )
     }
@@ -126,7 +126,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     fn reload_connections(&self) -> Result<bool, dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager.Settings",
-            "ReloadConnections",
+            "ReloadSyncConnections",
             (),
         )
         .and_then(|r: (bool,)| Ok(r.0))
@@ -144,7 +144,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager.Settings",
-            "Connections",
+            "SyncConnections",
         )
     }
 
@@ -191,49 +191,49 @@ impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSettingsPropertie
 }
 
 #[derive(Debug)]
-pub struct OrgFreedesktopNetworkManagerSettingsNewConnection {
+pub struct OrgFreedesktopNetworkManagerSettingsNewSyncConnection {
     pub connection: dbus::Path<'static>,
 }
 
-impl arg::AppendAll for OrgFreedesktopNetworkManagerSettingsNewConnection {
+impl arg::AppendAll for OrgFreedesktopNetworkManagerSettingsNewSyncConnection {
     fn append(&self, i: &mut arg::IterAppend) {
         arg::RefArg::append(&self.connection, i);
     }
 }
 
-impl arg::ReadAll for OrgFreedesktopNetworkManagerSettingsNewConnection {
+impl arg::ReadAll for OrgFreedesktopNetworkManagerSettingsNewSyncConnection {
     fn read(i: &mut arg::Iter) -> Result<Self, arg::TypeMismatchError> {
-        Ok(OrgFreedesktopNetworkManagerSettingsNewConnection {
+        Ok(OrgFreedesktopNetworkManagerSettingsNewSyncConnection {
             connection: i.read()?,
         })
     }
 }
 
-impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSettingsNewConnection {
-    const NAME: &'static str = "NewConnection";
+impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSettingsNewSyncConnection {
+    const NAME: &'static str = "NewSyncConnection";
     const INTERFACE: &'static str = "org.freedesktop.NetworkManager.Settings";
 }
 
 #[derive(Debug)]
-pub struct OrgFreedesktopNetworkManagerSettingsConnectionRemoved {
+pub struct OrgFreedesktopNetworkManagerSettingsSyncConnectionRemoved {
     pub connection: dbus::Path<'static>,
 }
 
-impl arg::AppendAll for OrgFreedesktopNetworkManagerSettingsConnectionRemoved {
+impl arg::AppendAll for OrgFreedesktopNetworkManagerSettingsSyncConnectionRemoved {
     fn append(&self, i: &mut arg::IterAppend) {
         arg::RefArg::append(&self.connection, i);
     }
 }
 
-impl arg::ReadAll for OrgFreedesktopNetworkManagerSettingsConnectionRemoved {
+impl arg::ReadAll for OrgFreedesktopNetworkManagerSettingsSyncConnectionRemoved {
     fn read(i: &mut arg::Iter) -> Result<Self, arg::TypeMismatchError> {
-        Ok(OrgFreedesktopNetworkManagerSettingsConnectionRemoved {
+        Ok(OrgFreedesktopNetworkManagerSettingsSyncConnectionRemoved {
             connection: i.read()?,
         })
     }
 }
 
-impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSettingsConnectionRemoved {
-    const NAME: &'static str = "ConnectionRemoved";
+impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSettingsSyncConnectionRemoved {
+    const NAME: &'static str = "SyncConnectionRemoved";
     const INTERFACE: &'static str = "org.freedesktop.NetworkManager.Settings";
 }

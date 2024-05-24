@@ -66,7 +66,7 @@ pub trait OrgFreedesktopNetworkManagerDevice {
     fn hw_address(&self) -> Result<String, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerDevice
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>> OrgFreedesktopNetworkManagerDevice
     for blocking::Proxy<'a, C>
 {
     fn reapply(
@@ -100,7 +100,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     > {
         self.method_call(
             "org.freedesktop.NetworkManager.Device",
-            "GetAppliedConnection",
+            "GetAppliedSyncConnection",
             (flags,),
         )
     }
@@ -197,7 +197,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager.Device",
-            "ActiveConnection",
+            "ActiveSyncConnection",
         )
     }
 
@@ -277,7 +277,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager.Device",
-            "AvailableConnections",
+            "AvailableSyncConnections",
         )
     }
 

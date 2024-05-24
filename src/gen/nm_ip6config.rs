@@ -25,8 +25,8 @@ pub trait OrgFreedesktopNetworkManagerIP6Config {
     fn dns_priority(&self) -> Result<i32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerIP6Config
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerIP6Config for blocking::Proxy<'a, C>
 {
     fn addresses(&self) -> Result<Vec<(Vec<u8>, u32, Vec<u8>)>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(

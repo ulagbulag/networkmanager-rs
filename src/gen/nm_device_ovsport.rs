@@ -6,7 +6,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceOvsPort {
     fn slaves(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerDeviceOvsPort for blocking::Proxy<'a, C>
 {
     fn slaves(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error> {

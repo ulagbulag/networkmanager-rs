@@ -31,10 +31,10 @@ dbus = "0.9"
 use networkmanager::devices::{Any, Device, Wired, Wireless};
 use networkmanager::{Error, NetworkManager};
 
-use dbus::blocking::Connection;
+use dbus::blocking::SyncConnection;
 
 fn main() -> Result<(), Error> {
-    let dbus_connection = Connection::new_system()?;
+    let dbus_connection = SyncConnection::new_system()?;
 
     let nm = NetworkManager::new(&dbus_connection);
 
@@ -126,7 +126,7 @@ fn main() -> Result<(), Error> {
     - [x] DHCP4
     - [x] DHCP6
   - [x] Accesspoint
-  - [x] ConnectionActive
+  - [x] SyncConnectionActive
   - [ ] NetworkManager (partially implemented)
   - [ ] AgentManager
   - [ ] Checkpoint
@@ -134,8 +134,8 @@ fn main() -> Result<(), Error> {
   - [ ] PPP
   - [ ] SecretAgent
   - [ ] Settings
-  - [ ] Settings Connection
-  - [ ] VPN Connection
+  - [ ] Settings SyncConnection
+  - [ ] VPN SyncConnection
   - [ ] VPN Plugin
   - [ ] WifiP2P
   - [ ] Wimax NSP
@@ -148,9 +148,9 @@ fn main() -> Result<(), Error> {
 Licensed under either of
 
 - Apache License, Version 2.0
-   ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+  ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
 - MIT license
-   ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+  ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
 

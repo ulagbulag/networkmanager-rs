@@ -49,8 +49,8 @@ pub trait OrgFreedesktopNetworkManagerVPNPlugin {
     fn state(&self) -> Result<u32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerVPNPlugin
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerVPNPlugin for blocking::Proxy<'a, C>
 {
     fn connect(
         &self,

@@ -6,8 +6,8 @@ pub trait OrgFreedesktopNetworkManagerDeviceVeth {
     fn peer(&self) -> Result<dbus::Path<'static>, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerDeviceVeth
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerDeviceVeth for blocking::Proxy<'a, C>
 {
     fn peer(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
