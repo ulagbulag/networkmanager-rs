@@ -8,7 +8,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceWireGuard {
     fn fw_mark(&self) -> Result<u32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceWireGuard for blocking::Proxy<'a, C>
 {
     fn public_key(&self) -> Result<Vec<u8>, dbus::Error> {

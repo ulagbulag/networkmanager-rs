@@ -33,7 +33,7 @@ pub trait OrgFreedesktopNetworkManagerIP4Config {
     fn wins_server_data(&self) -> Result<Vec<String>, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerIP4Config for blocking::Proxy<'a, C>
 {
     fn addresses(&self) -> Result<Vec<Vec<u32>>, dbus::Error> {

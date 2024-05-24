@@ -12,7 +12,7 @@ pub trait OrgFreedesktopNetworkManagerAgentManager {
     fn unregister(&self) -> Result<(), dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerAgentManager for blocking::Proxy<'a, C>
 {
     fn register(&self, identifier: &str) -> Result<(), dbus::Error> {

@@ -1,10 +1,10 @@
 use networkmanager::devices::{Any, Device, Wired, Wireless};
 use networkmanager::{Error, NetworkManager};
 
-use dbus::blocking::SyncConnection;
+use dbus::blocking::SyncSyncConnection;
 
 fn main() -> Result<(), Error> {
-    let dbus_connection = SyncConnection::new_system()?;
+    let dbus_connection = SyncSyncConnection::new_system()?;
 
     let nm = NetworkManager::new(&dbus_connection);
 
@@ -18,7 +18,7 @@ fn main() -> Result<(), Error> {
                 let conf = x.ip4_config()?;
                 println!("Gateway: {:?}", conf.gateway()?);
                 let con = x.active_connection()?;
-                println!("SyncConnection id: {}", con.id()?);
+                println!("SyncSyncConnection id: {}", con.id()?);
             }
             Device::WiFi(x) => {
                 println!("Bitrate: {:?}", x.bitrate()?);

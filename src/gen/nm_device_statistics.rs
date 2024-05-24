@@ -9,7 +9,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceStatistics {
     fn rx_bytes(&self) -> Result<u64, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceStatistics for blocking::Proxy<'a, C>
 {
     fn refresh_rate_ms(&self) -> Result<u32, dbus::Error> {

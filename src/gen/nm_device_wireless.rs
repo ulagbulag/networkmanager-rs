@@ -19,7 +19,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceWireless {
     fn last_scan(&self) -> Result<i64, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceWireless for blocking::Proxy<'a, C>
 {
     fn get_access_points(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error> {

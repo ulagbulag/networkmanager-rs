@@ -2,7 +2,7 @@
 use dbus::arg;
 use dbus::blocking;
 
-pub trait OrgFreedesktopNetworkManagerSyncConnectionActive {
+pub trait OrgFreedesktopNetworkManagerSyncSyncConnectionActive {
     fn connection(&self) -> Result<dbus::Path<'static>, dbus::Error>;
     fn specific_object(&self) -> Result<dbus::Path<'static>, dbus::Error>;
     fn id(&self) -> Result<String, dbus::Error>;
@@ -21,21 +21,21 @@ pub trait OrgFreedesktopNetworkManagerSyncConnectionActive {
     fn master(&self) -> Result<dbus::Path<'static>, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
-    OrgFreedesktopNetworkManagerSyncConnectionActive for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
+    OrgFreedesktopNetworkManagerSyncSyncConnectionActive for blocking::Proxy<'a, C>
 {
     fn connection(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
-            "SyncConnection",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
+            "SyncSyncConnection",
         )
     }
 
     fn specific_object(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "SpecificObject",
         )
     }
@@ -43,7 +43,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn id(&self) -> Result<String, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Id",
         )
     }
@@ -51,7 +51,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn uuid(&self) -> Result<String, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Uuid",
         )
     }
@@ -59,7 +59,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn type_(&self) -> Result<String, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Type",
         )
     }
@@ -67,7 +67,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn devices(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Devices",
         )
     }
@@ -75,7 +75,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn state(&self) -> Result<u32, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "State",
         )
     }
@@ -83,7 +83,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn state_flags(&self) -> Result<u32, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "StateFlags",
         )
     }
@@ -91,7 +91,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn default(&self) -> Result<bool, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Default",
         )
     }
@@ -99,7 +99,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn ip4_config(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Ip4Config",
         )
     }
@@ -107,7 +107,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn dhcp4_config(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Dhcp4Config",
         )
     }
@@ -115,7 +115,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn default6(&self) -> Result<bool, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Default6",
         )
     }
@@ -123,7 +123,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn ip6_config(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Ip6Config",
         )
     }
@@ -131,7 +131,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn dhcp6_config(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Dhcp6Config",
         )
     }
@@ -139,7 +139,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn vpn(&self) -> Result<bool, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Vpn",
         )
     }
@@ -147,29 +147,29 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn master(&self) -> Result<dbus::Path<'static>, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.SyncConnection.Active",
+            "org.freedesktop.NetworkManager.SyncSyncConnection.Active",
             "Master",
         )
     }
 }
 
 #[derive(Debug)]
-pub struct OrgFreedesktopNetworkManagerSyncConnectionActiveStateChanged {
+pub struct OrgFreedesktopNetworkManagerSyncSyncConnectionActiveStateChanged {
     pub state: u32,
     pub reason: u32,
 }
 
-impl arg::AppendAll for OrgFreedesktopNetworkManagerSyncConnectionActiveStateChanged {
+impl arg::AppendAll for OrgFreedesktopNetworkManagerSyncSyncConnectionActiveStateChanged {
     fn append(&self, i: &mut arg::IterAppend) {
         arg::RefArg::append(&self.state, i);
         arg::RefArg::append(&self.reason, i);
     }
 }
 
-impl arg::ReadAll for OrgFreedesktopNetworkManagerSyncConnectionActiveStateChanged {
+impl arg::ReadAll for OrgFreedesktopNetworkManagerSyncSyncConnectionActiveStateChanged {
     fn read(i: &mut arg::Iter) -> Result<Self, arg::TypeMismatchError> {
         Ok(
-            OrgFreedesktopNetworkManagerSyncConnectionActiveStateChanged {
+            OrgFreedesktopNetworkManagerSyncSyncConnectionActiveStateChanged {
                 state: i.read()?,
                 reason: i.read()?,
             },
@@ -177,27 +177,27 @@ impl arg::ReadAll for OrgFreedesktopNetworkManagerSyncConnectionActiveStateChang
     }
 }
 
-impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSyncConnectionActiveStateChanged {
+impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerSyncSyncConnectionActiveStateChanged {
     const NAME: &'static str = "StateChanged";
-    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.SyncConnection.Active";
+    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.SyncSyncConnection.Active";
 }
 
 #[derive(Debug)]
-pub struct OrgFreedesktopNetworkManagerSyncConnectionActivePropertiesChanged {
+pub struct OrgFreedesktopNetworkManagerSyncSyncConnectionActivePropertiesChanged {
     pub properties:
         ::std::collections::HashMap<String, arg::Variant<Box<dyn arg::RefArg + 'static>>>,
 }
 
-impl arg::AppendAll for OrgFreedesktopNetworkManagerSyncConnectionActivePropertiesChanged {
+impl arg::AppendAll for OrgFreedesktopNetworkManagerSyncSyncConnectionActivePropertiesChanged {
     fn append(&self, i: &mut arg::IterAppend) {
         arg::RefArg::append(&self.properties, i);
     }
 }
 
-impl arg::ReadAll for OrgFreedesktopNetworkManagerSyncConnectionActivePropertiesChanged {
+impl arg::ReadAll for OrgFreedesktopNetworkManagerSyncSyncConnectionActivePropertiesChanged {
     fn read(i: &mut arg::Iter) -> Result<Self, arg::TypeMismatchError> {
         Ok(
-            OrgFreedesktopNetworkManagerSyncConnectionActivePropertiesChanged {
+            OrgFreedesktopNetworkManagerSyncSyncConnectionActivePropertiesChanged {
                 properties: i.read()?,
             },
         )
@@ -205,8 +205,8 @@ impl arg::ReadAll for OrgFreedesktopNetworkManagerSyncConnectionActiveProperties
 }
 
 impl dbus::message::SignalArgs
-    for OrgFreedesktopNetworkManagerSyncConnectionActivePropertiesChanged
+    for OrgFreedesktopNetworkManagerSyncSyncConnectionActivePropertiesChanged
 {
     const NAME: &'static str = "PropertiesChanged";
-    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.SyncConnection.Active";
+    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.SyncSyncConnection.Active";
 }

@@ -16,7 +16,7 @@ pub trait OrgFreedesktopNetworkManagerPPP {
     fn set_ifindex(&self, ifindex: i32) -> Result<(), dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>> OrgFreedesktopNetworkManagerPPP
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>> OrgFreedesktopNetworkManagerPPP
     for blocking::Proxy<'a, C>
 {
     fn need_secrets(&self) -> Result<(String, String), dbus::Error> {
