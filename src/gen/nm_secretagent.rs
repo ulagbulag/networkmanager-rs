@@ -43,7 +43,7 @@ pub trait OrgFreedesktopNetworkManagerSecretAgent {
     ) -> Result<(), dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerSecretAgent for blocking::Proxy<'a, C>
 {
     fn get_secrets(

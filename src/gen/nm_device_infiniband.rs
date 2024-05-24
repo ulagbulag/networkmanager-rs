@@ -7,7 +7,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceInfiniband {
     fn carrier(&self) -> Result<bool, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerDeviceInfiniband for blocking::Proxy<'a, C>
 {
     fn hw_address(&self) -> Result<String, dbus::Error> {

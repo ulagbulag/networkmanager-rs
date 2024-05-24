@@ -17,7 +17,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceIPTunnel {
     fn flags(&self) -> Result<u32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerDeviceIPTunnel for blocking::Proxy<'a, C>
 {
     fn mode(&self) -> Result<u32, dbus::Error> {

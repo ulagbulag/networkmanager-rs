@@ -85,7 +85,7 @@ pub enum ActivationStateFlags {
 }
 
 #[derive(Debug, FromPrimitive)]
-pub enum ActiveConnectionState {
+pub enum ActiveSyncConnectionState {
     Unknown = 0,
     Activating = 1,
     Activated = 2,
@@ -237,10 +237,10 @@ pub enum ActiveConnectionState {
 //     NmDeviceStateReasonFirmwareMissing = 35,
 //     NmDeviceStateReasonRemoved = 36,
 //     NmDeviceStateReasonSleeping = 37,
-//     NmDeviceStateReasonConnectionRemoved = 38,
+//     NmDeviceStateReasonSyncConnectionRemoved = 38,
 //     NmDeviceStateReasonUserRequested = 39,
 //     NmDeviceStateReasonCarrier = 40,
-//     NmDeviceStateReasonConnectionAssumed = 41,
+//     NmDeviceStateReasonSyncConnectionAssumed = 41,
 //     NmDeviceStateReasonSupplicantAvailable = 42,
 //     NmDeviceStateReasonModemNotFound = 43,
 //     NmDeviceStateReasonBtFailed = 44,
@@ -253,7 +253,7 @@ pub enum ActiveConnectionState {
 //     NmDeviceStateReasonBr2684Failed = 51,
 //     NmDeviceStateReasonModemManagerUnavailable = 52,
 //     NmDeviceStateReasonSsidNotFound = 53,
-//     NmDeviceStateReasonSecondaryConnectionFailed = 54,
+//     NmDeviceStateReasonSecondarySyncConnectionFailed = 54,
 //     NmDeviceStateReasonDcbFcoeFailed = 55,
 //     NmDeviceStateReasonTeamdControlFailed = 56,
 //     NmDeviceStateReasonModemFailed = 57,
@@ -277,14 +277,14 @@ pub enum ActiveConnectionState {
 //     NmMeteredGuessNo = 4,
 // }
 
-// // pub enum NMConnectionMultiConnect {
+// // pub enum NMSyncConnectionMultiConnect {
 // //     NM_CONNECTION_MULTI_CONNECT_DEFAULT = 0,
 // //     NM_CONNECTION_MULTI_CONNECT_SINGLE = 1,
 // //     NM_CONNECTION_MULTI_CONNECT_MANUAL_MULTIPLE = 2,
 // //     NM_CONNECTION_MULTI_CONNECT_MULTIPLE = 3,
 // // }
 
-// // pub enum NMActiveConnectionStateReason {
+// // pub enum NMActiveSyncConnectionStateReason {
 // //     NM_ACTIVE_CONNECTION_STATE_REASON_UNKNOWN = 0,
 // //     NM_ACTIVE_CONNECTION_STATE_REASON_NONE = 1,
 // //     NM_ACTIVE_CONNECTION_STATE_REASON_USER_DISCONNECTED = 2,
@@ -347,14 +347,14 @@ pub enum ActiveConnectionState {
 // //     NM_ROLLBACK_RESULT_ERR_FAILED = 3,
 // // }
 
-// // pub enum NMSettingsConnectionFlags {
+// // pub enum NMSettingsSyncConnectionFlags {
 // //     NM_SETTINGS_CONNECTION_FLAG_NONE = 0,
 // //     NM_SETTINGS_CONNECTION_FLAG_UNSAVED = 1,
 // //     NM_SETTINGS_CONNECTION_FLAG_NM_GENERATED = 2,
 // //     NM_SETTINGS_CONNECTION_FLAG_VOLATILE = 4,
 // // }
 
-// // pub enum NMSettingsAddConnection2Flags {
+// // pub enum NMSettingsAddSyncConnection2Flags {
 // //     NM_SETTINGS_ADD_CONNECTION2_FLAG_NONE = 0,
 // //     NM_SETTINGS_ADD_CONNECTION2_FLAG_TO_DISK = 1,
 // //     NM_SETTINGS_ADD_CONNECTION2_FLAG_IN_MEMORY = 2,

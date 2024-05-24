@@ -102,7 +102,7 @@ pub trait OrgFreedesktopNetworkManager {
     ) -> Result<(), dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManager
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>> OrgFreedesktopNetworkManager
     for blocking::Proxy<'a, C>
 {
     fn reload(&self, flags: u32) -> Result<(), dbus::Error> {
@@ -136,7 +136,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     ) -> Result<dbus::Path<'static>, dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager",
-            "ActivateConnection",
+            "ActivateSyncConnection",
             (connection, device, specific_object),
         )
         .and_then(|r: (dbus::Path<'static>,)| Ok(r.0))
@@ -153,7 +153,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     ) -> Result<(dbus::Path<'static>, dbus::Path<'static>), dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager",
-            "AddAndActivateConnection",
+            "AddAndActivateSyncConnection",
             (connection, device, specific_object),
         )
     }
@@ -177,7 +177,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     > {
         self.method_call(
             "org.freedesktop.NetworkManager",
-            "AddAndActivateConnection2",
+            "AddAndActivateSyncConnection2",
             (connection, device, specific_object, options),
         )
     }
@@ -185,7 +185,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
     fn deactivate_connection(&self, active_connection: dbus::Path) -> Result<(), dbus::Error> {
         self.method_call(
             "org.freedesktop.NetworkManager",
-            "DeactivateConnection",
+            "DeactivateSyncConnection",
             (active_connection,),
         )
     }
@@ -355,7 +355,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager",
-            "ActiveConnections",
+            "ActiveSyncConnections",
         )
     }
 
@@ -363,7 +363,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager",
-            "PrimaryConnection",
+            "PrimarySyncConnection",
         )
     }
 
@@ -371,7 +371,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager",
-            "PrimaryConnectionType",
+            "PrimarySyncConnectionType",
         )
     }
 
@@ -387,7 +387,7 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetw
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
             "org.freedesktop.NetworkManager",
-            "ActivatingConnection",
+            "ActivatingSyncConnection",
         )
     }
 

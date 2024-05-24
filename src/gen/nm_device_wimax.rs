@@ -14,7 +14,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceWiMax {
     fn active_nsp(&self) -> Result<dbus::Path<'static>, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerDeviceWiMax for blocking::Proxy<'a, C>
 {
     fn get_nsp_list(&self) -> Result<Vec<dbus::Path<'static>>, dbus::Error> {

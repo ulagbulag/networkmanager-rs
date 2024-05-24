@@ -4,8 +4,8 @@ use dbus::blocking;
 
 pub trait OrgFreedesktopNetworkManagerDevicePpp {}
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerDevicePpp
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerDevicePpp for blocking::Proxy<'a, C>
 {
 }
 

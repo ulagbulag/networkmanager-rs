@@ -8,8 +8,8 @@ pub trait OrgFreedesktopNetworkManagerWiMaxNsp {
     fn network_type(&self) -> Result<u32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerWiMaxNsp
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerWiMaxNsp for blocking::Proxy<'a, C>
 {
     fn name(&self) -> Result<String, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(

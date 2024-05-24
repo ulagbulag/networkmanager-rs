@@ -6,8 +6,8 @@ pub trait OrgFreedesktopNetworkManagerDeviceWpan {
     fn hw_address(&self) -> Result<String, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>> OrgFreedesktopNetworkManagerDeviceWpan
-    for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+    OrgFreedesktopNetworkManagerDeviceWpan for blocking::Proxy<'a, C>
 {
     fn hw_address(&self) -> Result<String, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(

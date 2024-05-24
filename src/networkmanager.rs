@@ -3,7 +3,7 @@ use crate::devices::Device;
 use crate::errors::Error;
 use crate::gen::OrgFreedesktopNetworkManager;
 use crate::types::ReloadFlag;
-use dbus::blocking::Connection;
+use dbus::blocking::SyncConnection;
 
 use num_traits::ToPrimitive;
 
@@ -15,7 +15,7 @@ pub struct NetworkManager<'a> {
 }
 
 impl<'a> NetworkManager<'a> {
-    pub fn new(dbus_connection: &'a Connection) -> Self {
+    pub fn new(dbus_connection: &'a SyncConnection) -> Self {
         NetworkManager {
             dbus_accessor: DBusAccessor::new(
                 dbus_connection,

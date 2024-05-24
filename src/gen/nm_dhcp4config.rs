@@ -11,7 +11,7 @@ pub trait OrgFreedesktopNetworkManagerDHCP4Config {
     >;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::Connection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     OrgFreedesktopNetworkManagerDHCP4Config for blocking::Proxy<'a, C>
 {
     fn options(
