@@ -10,7 +10,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceModem {
     fn apn(&self) -> Result<String, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceModem for blocking::Proxy<'a, C>
 {
     fn modem_capabilities(&self) -> Result<u32, dbus::Error> {

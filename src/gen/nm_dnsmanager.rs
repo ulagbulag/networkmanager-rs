@@ -13,7 +13,7 @@ pub trait OrgFreedesktopNetworkManagerDnsManager {
     >;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDnsManager for blocking::Proxy<'a, C>
 {
     fn mode(&self) -> Result<String, dbus::Error> {

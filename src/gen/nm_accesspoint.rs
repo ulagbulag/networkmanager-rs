@@ -15,7 +15,7 @@ pub trait OrgFreedesktopNetworkManagerAccessPoint {
     fn last_seen(&self) -> Result<i32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerAccessPoint for blocking::Proxy<'a, C>
 {
     fn flags(&self) -> Result<u32, dbus::Error> {

@@ -6,7 +6,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceAdsl {
     fn carrier(&self) -> Result<bool, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceAdsl for blocking::Proxy<'a, C>
 {
     fn carrier(&self) -> Result<bool, dbus::Error> {

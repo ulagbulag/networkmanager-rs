@@ -8,7 +8,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceBluetooth {
     fn bt_capabilities(&self) -> Result<u32, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceBluetooth for blocking::Proxy<'a, C>
 {
     fn hw_address(&self) -> Result<String, dbus::Error> {

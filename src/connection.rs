@@ -1,18 +1,18 @@
 use crate::configs::{Dhcp4Config, Dhcp6Config, Ip4Config, Ip6Config};
 use crate::dbus_api::DBusAccessor;
 use crate::devices::Device;
-use crate::gen::OrgFreedesktopNetworkManagerSyncConnectionActive;
-use crate::types::{ActivationStateFlags, ActiveSyncConnectionState};
+use crate::gen::OrgFreedesktopNetworkManagerSyncSyncConnectionActive;
+use crate::types::{ActivationStateFlags, ActiveSyncSyncConnectionState};
 use crate::Error;
 use num_traits::FromPrimitive;
 
-pub struct SyncConnection<'a> {
+pub struct SyncSyncConnection<'a> {
     dbus_accessor: DBusAccessor<'a>,
 }
 
-impl<'a> SyncConnection<'a> {
+impl<'a> SyncSyncConnection<'a> {
     pub(crate) fn new(dbus_accessor: DBusAccessor<'a>) -> Self {
-        SyncConnection { dbus_accessor }
+        SyncSyncConnection { dbus_accessor }
     }
     pub fn connection(&self) -> Result<String, Error> {
         Ok(proxy!(self).connection()?.to_string())
@@ -41,7 +41,7 @@ impl<'a> SyncConnection<'a> {
         }
         Ok(res)
     }
-    pub fn state(&self) -> Result<ActiveSyncConnectionState, Error> {
+    pub fn state(&self) -> Result<ActiveSyncSyncConnectionState, Error> {
         let state = proxy!(self).state()?;
         match FromPrimitive::from_u32(state) {
             Some(x) => Ok(x),

@@ -1,6 +1,6 @@
 use super::{BridgeDevice, EthernetDevice, GenericDevice, VethDevice, WiFiDevice};
 use crate::configs::{Dhcp4Config, Dhcp6Config, Ip4Config, Ip6Config};
-use crate::connection::SyncConnection;
+use crate::connection::SyncSyncConnection;
 use crate::dbus_api::DBusAccessor;
 use crate::errors::Error;
 use crate::gen::OrgFreedesktopNetworkManagerDevice;
@@ -38,7 +38,7 @@ pub trait Any {
     fn ip4_address(&self) -> Result<u32, Error>;
     fn state(&self) -> Result<u32, Error>;
     fn state_reason(&self) -> Result<(u32, u32), Error>;
-    fn active_connection(&self) -> Result<SyncConnection, Error>;
+    fn active_connection(&self) -> Result<SyncSyncConnection, Error>;
     fn ip4_config(&self) -> Result<Ip4Config, Error>;
     fn dhcp4_config(&self) -> Result<Dhcp4Config, Error>;
     fn ip6_config(&self) -> Result<Ip6Config, Error>;
@@ -50,7 +50,7 @@ pub trait Any {
     fn firmware_missing(&self) -> Result<bool, Error>;
     fn nm_plugin_missing(&self) -> Result<bool, Error>;
     fn device_type(&self) -> Result<DeviceType, Error>;
-    fn available_connections(&self) -> Result<Vec<SyncConnection>, Error>;
+    fn available_connections(&self) -> Result<Vec<SyncSyncConnection>, Error>;
     fn physical_port_id(&self) -> Result<String, Error>;
     fn mtu(&self) -> Result<u32, Error>;
     fn metered(&self) -> Result<u32, Error>;
@@ -122,9 +122,9 @@ macro_rules! impl_any {
             fn state_reason(&self) -> Result<(u32, u32), Error> {
                 Ok(proxy!(self).state_reason()?)
             }
-            fn active_connection(&self) -> Result<SyncConnection, Error> {
+            fn active_connection(&self) -> Result<SyncSyncConnection, Error> {
                 let path = proxy!(self).active_connection()?;
-                Ok(SyncConnection::new(DBusAccessor::new(
+                Ok(SyncSyncConnection::new(DBusAccessor::new(
                     self.dbus_accessor.connection,
                     &self.dbus_accessor.bus,
                     &path,
@@ -187,7 +187,7 @@ macro_rules! impl_any {
                     None => Err(Error::UnsupportedType),
                 }
             }
-            fn available_connections(&self) -> Result<Vec<SyncConnection>, Error> {
+            fn available_connections(&self) -> Result<Vec<SyncSyncConnection>, Error> {
                 todo!()
             }
             fn physical_port_id(&self) -> Result<String, Error> {

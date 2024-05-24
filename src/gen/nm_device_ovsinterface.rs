@@ -4,7 +4,7 @@ use dbus::blocking;
 
 pub trait OrgFreedesktopNetworkManagerDeviceOvsInterface {}
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceOvsInterface for blocking::Proxy<'a, C>
 {
 }

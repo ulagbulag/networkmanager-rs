@@ -31,10 +31,10 @@ dbus = "0.9"
 use networkmanager::devices::{Any, Device, Wired, Wireless};
 use networkmanager::{Error, NetworkManager};
 
-use dbus::blocking::SyncConnection;
+use dbus::blocking::SyncSyncConnection;
 
 fn main() -> Result<(), Error> {
-    let dbus_connection = SyncConnection::new_system()?;
+    let dbus_connection = SyncSyncConnection::new_system()?;
 
     let nm = NetworkManager::new(&dbus_connection);
 
@@ -126,7 +126,7 @@ fn main() -> Result<(), Error> {
     - [x] DHCP4
     - [x] DHCP6
   - [x] Accesspoint
-  - [x] SyncConnectionActive
+  - [x] SyncSyncConnectionActive
   - [ ] NetworkManager (partially implemented)
   - [ ] AgentManager
   - [ ] Checkpoint
@@ -134,8 +134,8 @@ fn main() -> Result<(), Error> {
   - [ ] PPP
   - [ ] SecretAgent
   - [ ] Settings
-  - [ ] Settings SyncConnection
-  - [ ] VPN SyncConnection
+  - [ ] Settings SyncSyncConnection
+  - [ ] VPN SyncSyncConnection
   - [ ] VPN Plugin
   - [ ] WifiP2P
   - [ ] Wimax NSP

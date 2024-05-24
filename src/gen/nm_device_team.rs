@@ -9,7 +9,7 @@ pub trait OrgFreedesktopNetworkManagerDeviceTeam {
     fn config(&self) -> Result<String, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
     OrgFreedesktopNetworkManagerDeviceTeam for blocking::Proxy<'a, C>
 {
     fn hw_address(&self) -> Result<String, dbus::Error> {

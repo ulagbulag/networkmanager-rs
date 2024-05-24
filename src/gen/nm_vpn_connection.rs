@@ -2,18 +2,18 @@
 use dbus::arg;
 use dbus::blocking;
 
-pub trait OrgFreedesktopNetworkManagerVPNSyncConnection {
+pub trait OrgFreedesktopNetworkManagerVPNSyncSyncConnection {
     fn vpn_state(&self) -> Result<u32, dbus::Error>;
     fn banner(&self) -> Result<String, dbus::Error>;
 }
 
-impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
-    OrgFreedesktopNetworkManagerVPNSyncConnection for blocking::Proxy<'a, C>
+impl<'a, C: ::std::ops::Deref<Target = blocking::SyncSyncConnection>>
+    OrgFreedesktopNetworkManagerVPNSyncSyncConnection for blocking::Proxy<'a, C>
 {
     fn vpn_state(&self) -> Result<u32, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.VPN.SyncConnection",
+            "org.freedesktop.NetworkManager.VPN.SyncSyncConnection",
             "VpnState",
         )
     }
@@ -21,56 +21,56 @@ impl<'a, C: ::std::ops::Deref<Target = blocking::SyncConnection>>
     fn banner(&self) -> Result<String, dbus::Error> {
         <Self as blocking::stdintf::org_freedesktop_dbus::Properties>::get(
             &self,
-            "org.freedesktop.NetworkManager.VPN.SyncConnection",
+            "org.freedesktop.NetworkManager.VPN.SyncSyncConnection",
             "Banner",
         )
     }
 }
 
 #[derive(Debug)]
-pub struct OrgFreedesktopNetworkManagerVPNSyncConnectionPropertiesChanged {
+pub struct OrgFreedesktopNetworkManagerVPNSyncSyncConnectionPropertiesChanged {
     pub properties:
         ::std::collections::HashMap<String, arg::Variant<Box<dyn arg::RefArg + 'static>>>,
 }
 
-impl arg::AppendAll for OrgFreedesktopNetworkManagerVPNSyncConnectionPropertiesChanged {
+impl arg::AppendAll for OrgFreedesktopNetworkManagerVPNSyncSyncConnectionPropertiesChanged {
     fn append(&self, i: &mut arg::IterAppend) {
         arg::RefArg::append(&self.properties, i);
     }
 }
 
-impl arg::ReadAll for OrgFreedesktopNetworkManagerVPNSyncConnectionPropertiesChanged {
+impl arg::ReadAll for OrgFreedesktopNetworkManagerVPNSyncSyncConnectionPropertiesChanged {
     fn read(i: &mut arg::Iter) -> Result<Self, arg::TypeMismatchError> {
         Ok(
-            OrgFreedesktopNetworkManagerVPNSyncConnectionPropertiesChanged {
+            OrgFreedesktopNetworkManagerVPNSyncSyncConnectionPropertiesChanged {
                 properties: i.read()?,
             },
         )
     }
 }
 
-impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerVPNSyncConnectionPropertiesChanged {
+impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerVPNSyncSyncConnectionPropertiesChanged {
     const NAME: &'static str = "PropertiesChanged";
-    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.VPN.SyncConnection";
+    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.VPN.SyncSyncConnection";
 }
 
 #[derive(Debug)]
-pub struct OrgFreedesktopNetworkManagerVPNSyncConnectionVpnStateChanged {
+pub struct OrgFreedesktopNetworkManagerVPNSyncSyncConnectionVpnStateChanged {
     pub state: u32,
     pub reason: u32,
 }
 
-impl arg::AppendAll for OrgFreedesktopNetworkManagerVPNSyncConnectionVpnStateChanged {
+impl arg::AppendAll for OrgFreedesktopNetworkManagerVPNSyncSyncConnectionVpnStateChanged {
     fn append(&self, i: &mut arg::IterAppend) {
         arg::RefArg::append(&self.state, i);
         arg::RefArg::append(&self.reason, i);
     }
 }
 
-impl arg::ReadAll for OrgFreedesktopNetworkManagerVPNSyncConnectionVpnStateChanged {
+impl arg::ReadAll for OrgFreedesktopNetworkManagerVPNSyncSyncConnectionVpnStateChanged {
     fn read(i: &mut arg::Iter) -> Result<Self, arg::TypeMismatchError> {
         Ok(
-            OrgFreedesktopNetworkManagerVPNSyncConnectionVpnStateChanged {
+            OrgFreedesktopNetworkManagerVPNSyncSyncConnectionVpnStateChanged {
                 state: i.read()?,
                 reason: i.read()?,
             },
@@ -78,7 +78,7 @@ impl arg::ReadAll for OrgFreedesktopNetworkManagerVPNSyncConnectionVpnStateChang
     }
 }
 
-impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerVPNSyncConnectionVpnStateChanged {
+impl dbus::message::SignalArgs for OrgFreedesktopNetworkManagerVPNSyncSyncConnectionVpnStateChanged {
     const NAME: &'static str = "VpnStateChanged";
-    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.VPN.SyncConnection";
+    const INTERFACE: &'static str = "org.freedesktop.NetworkManager.VPN.SyncSyncConnection";
 }
